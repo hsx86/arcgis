@@ -1,0 +1,62 @@
+﻿<!--<%@ page language="java" pageEncoding="UTF-8"%>-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>百度地图</title>
+    
+    <link rel="stylesheet" href="http://localhost/arcgis320api/dijit/themes/tundra/tundra.css">
+    <link rel="stylesheet" href="http://localhost/arcgis320api/esri/css/esri.css">
+    <script src="http://localhost/arcgis320api/init.js"></script>
+    <script type="text/javascript" src="js/baidu.js"></script>
+	<script type="text/javascript" src="js/initMap.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+
+        <style>
+            html, body {
+            height: 100%;
+            }
+        </style>
+
+    <script type="text/javascript">
+     $(function() {
+		dojo.require("esri.map");
+		/**
+		 * 加载init()
+		 * 初始化
+		 */
+	    dojo.addOnLoad(init);
+	});
+	/**
+	 * 初始化地图
+	 */
+    function init() {
+        map = new esri.Map("map");
+		/**
+		 * 添加鼠标事件的监听
+		 */
+		dojo.connect(map, "onLoad", function() {
+           setConnect();
+		   start();
+        });
+        var layer = new baiduMapLayer();
+        map.addLayer(layer);
+    }
+	/**
+     * 程序加载完成
+     */
+    function start()
+    {
+		initMap(122.073228, 41.141248,3);
+		porntAction(122.073228,41.141248,"test","img/1.png");
+    }
+    </script>
+  </head>
+
+  <body>
+    <div id="map" style="height:100%"></div>
+  </body>
+
+</html>

@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>天地图</title>
+
+    <style>
+        html, body {
+            height: 100%;
+            width:100%;
+        }
+    </style>
+
+    <link rel="stylesheet" href="http://localhost/arcgis320api/dijit/themes/tundra/tundra.css">
+    <link rel="stylesheet" href="http://localhost/arcgis320api/esri/css/esri.css">
+    <script src="http://localhost/arcgis320api/init.js"></script>
+
+    <script type="text/javascript" src="js/tdt.js"></script>
+    <script type="text/javascript" src="js/initMap.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+        var layer;
+        var layer_img;
+        var layer_word;
+        $(function () {
+            dojo.require("esri.map");
+            /**
+             * 加载init()
+             * 初始化
+             */
+            dojo.addOnLoad(init);
+        });
+        /**
+         * 初始化地图
+         */
+        function init() {
+            map = new esri.Map("map");
+            /**
+             * 添加鼠标事件的监听
+             */
+            dojo.connect(map, "onLoad", function () {
+                setConnect();
+                start();
+            });
+             layer = TDTLayer();
+            layer.hide();
+             layer_word = TDTWordLayer();
+             layer_img = TDTImageLayer();
+            map.addLayer(layer);
+            map.addLayer(layer_img);
+            //map.addLayer(layer_word);
+            dojo.connect(map, "onClick", function (e) {
+                alert(e.mapPoint.x + "," + e.mapPoint.y);
+                //var xy = webMercator2LngLat(e.mapPoint.x, e.mapPoint.y);
+                //alert(JSON.stringify(xy));
+            });
+        }
+        /**
+         * 程序加载完成
+         */
+        function start() {
+            //initMap(122.073228, 41.141248, 13);
+            //porntAction(122.073228, 41.141248, "test", "img/1.png");
+            //initMap(118.18604298683927, 24.48097708520379, 15);
+            //porntAction(118.18604298683927, 24.48097708520379, "test", "img/1.png");
+            porntAction(118.18123546, 24.48374619, "test", "img/1.png");
+            initMap(118.18123546, 24.48374619, 15);
+        }
+
+        function toggleMap(index) {
+            if (index==0) {
+                layer.show();
+                layer_img.hide();
+            } else {
+                layer.hide();
+                layer_img.show();
+            }
+        }
+    </script>
+</head>
+
+<!--  <body class="tundra">
+    <div id="map" style="width:100%; height:600px; border:1px solid #000;" dojotype="dijit.layout.ContentPane" region="center"></div>
+  </body>-->
+
+<body>
+    <div id="map" style="height: 100%;">
+        <div style="float:right;position:absolute;right:5px;z-index:99">
+            <button onclick="toggleMap(0)">地图</button>
+            <button onclick="toggleMap(1)">影像</button>
+        </div>
+    </div>
+</body>
+</html>

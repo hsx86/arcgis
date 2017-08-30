@@ -1,0 +1,5 @@
+D:\hsx\PROJECTS\GitTest\WpfAliyun\WebArcgisOnline\bin\WebArcgisOnline.dll
+D:\hsx\PROJECTS\GitTest\WpfAliyun\WebArcgisOnline\bin\WebArcgisOnline.pdb
+D:\hsx\PROJECTS\GitTest\WpfAliyun\WebArcgisOnline\obj\Debug\WebArcgisOnline.csprojResolveAssemblyReference.cache
+D:\hsx\PROJECTS\GitTest\WpfAliyun\WebArcgisOnline\obj\Debug\WebArcgisOnline.dll
+D:\hsx\PROJECTS\GitTest\WpfAliyun\WebArcgisOnline\obj\Debug\WebArcgisOnline.pdb
